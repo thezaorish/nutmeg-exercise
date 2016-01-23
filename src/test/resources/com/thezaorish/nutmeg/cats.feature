@@ -5,10 +5,10 @@ Feature: Facts about cats
     Then I should be displayed the image url
     And I should have the cat image on my filesystem
 
-  Scenario: Daily cat fact
-    When I choose to read a fact about cats
-    Then I should be displayed the cat fact
-
   Scenario: Various cat categories
     When I choose to find out more about the categories of cats
     Then I should be displayed the cat categories
+
+  Scenario: Find out cat facts
+    When I choose to read a fact about cats
+    Then I should be displayed the cat fact
