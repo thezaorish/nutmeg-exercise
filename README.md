@@ -11,7 +11,15 @@ The command should:
 > - with fact, it should print to stdout a cat fact
 
 #####**Technology**
+[Maven](https://maven.apache.org/) for dependency management and packaging
+[Cucumber](https://cucumber.io/) for acceptance tests
+[Unirest](http://unirest.io/java.html) for interacting with the external APIs
+[Jackson Library](https://github.com/FasterXML/jackson) for handling JSON and XML transformation
+[Guice](https://github.com/google/guice) for dependency injection
+[Jnuit](http://junit.org/) for unit tests
 
 #####**Build**
+> - mvn package
 
-#####**Run*
+#####**Run**
+> - $ java -jar target/nutmeg-exercise [option]
