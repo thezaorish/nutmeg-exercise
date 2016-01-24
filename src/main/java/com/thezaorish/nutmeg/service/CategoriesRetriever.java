@@ -1,5 +1,7 @@
 package com.thezaorish.nutmeg.service;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.thezaorish.nutmeg.model.TheCatApiResponse;
 import com.thezaorish.nutmeg.service.http.TheCatApiHTTPService;
 
@@ -10,12 +12,14 @@ import java.util.List;
 /**
  * Created by zaorish on 23/01/16.
  */
+@Singleton
 public class CategoriesRetriever {
 
 	private TheCatApiHTTPService theCatApiHTTPService;
 
 	private XMLDeserializer xmlDeserializer;
 
+	@Inject
 	public CategoriesRetriever(TheCatApiHTTPService theCatApiHTTPService, XMLDeserializer xmlDeserializer) {
 		this.theCatApiHTTPService = theCatApiHTTPService;
 		this.xmlDeserializer = xmlDeserializer;

@@ -1,11 +1,9 @@
 package com.thezaorish.nutmeg;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.thezaorish.nutmeg.service.CategoriesRetriever;
-import com.thezaorish.nutmeg.service.XMLDeserializer;
-import com.thezaorish.nutmeg.service.http.CatFactHTTPService;
 import com.thezaorish.nutmeg.service.FactRetriever;
-import com.thezaorish.nutmeg.service.JsonDeserializer;
-import com.thezaorish.nutmeg.service.http.TheCatApiHTTPService;
 
 /**
  * Created by zaorish on 23/01/16.
@@ -13,18 +11,13 @@ import com.thezaorish.nutmeg.service.http.TheCatApiHTTPService;
 public class Runner {
 
 	public static void main(String[] args) {
+		Injector injector = Guice.createInjector();
 		if ("fact".equals(args[0])) {
-			CatFactHTTPService httpService = new CatFactHTTPService();
-			JsonDeserializer deserializer = new JsonDeserializer();
-
-			FactRetriever factRetriever = new FactRetriever(httpService, deserializer);
-			System.out.print(factRetriever.retrieveFactAboutCats());
+			FactRetriever factRetrieverInstance = injector.getInstance(FactRetriever.class);
+			System.out.print(factRetrieverInstance.retrieveFactAboutCats());
 		} if ("categories".equals(args[0])) {
-			TheCatApiHTTPService theCapApiHTTPService = new TheCatApiHTTPService();
-			XMLDeserializer xmlDeserializer = new XMLDeserializer();
-
-			CategoriesRetriever categoriesRetriever = new CategoriesRetriever(theCapApiHTTPService, xmlDeserializer);
-			System.out.print(categoriesRetriever.retrieveCategories());
+			CategoriesRetriever categoriesRetrieverInstance = injector.getInstance(CategoriesRetriever.class);
+			System.out.println(categoriesRetrieverInstance.retrieveCategories());
 		} else {
 			System.out.print("");
 		}

@@ -2,12 +2,14 @@ package com.thezaorish.nutmeg.service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.google.inject.Singleton;
 
 import java.io.IOException;
 
 /**
  * Created by zaorish on 23/01/16.
  */
+@Singleton
 public class XMLDeserializer {
 
 	public <T> T retrieveResourceFromResponse(String xml, Class<T> clazz) throws IOException {

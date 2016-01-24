@@ -1,5 +1,6 @@
 package com.thezaorish.nutmeg.service.http;
 
+import com.google.inject.Singleton;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -10,6 +11,7 @@ import org.apache.http.entity.ContentType;
 /**
  * Created by zaorish on 23/01/16.
  */
+@Singleton
 public class CatFactHTTPService {
 
 	public String get() {
