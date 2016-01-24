@@ -11,6 +11,10 @@ import org.junit.Assert;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by zaorish on 23/01/16.
@@ -18,6 +22,7 @@ import java.io.PrintStream;
 public class CatsSteps {
 
 	private ByteArrayOutputStream outputStream;
+	private String key;
 
 	@Before
 	public void setUp() {
@@ -30,19 +35,47 @@ public class CatsSteps {
 		System.setOut(System.out);
 	}
 
+	@When("I choose an invalid operation")
+	public void invalidOption() throws Exception {
+		Runner.main(new String[] { "invalid" });
+		outputStream.flush();
+	}
+
+	@When("I do not choose any operation")
+	public void defaultOption() throws Exception {
+		Runner.main(new String[] {});
+		outputStream.flush();
+	}
+
 	@When("I choose to get an image of a cat")
-	public void chooseImage() {
-		//
+	public void chooseImage() throws Exception {
+		Runner.main(new String[] { "file" });
+		outputStream.flush();
+	}
+
+	@Then("I should be instructed what are the correct operations")
+	public void displayValidOperations() {
+		String[] linesOfOutput = linesOfOutput();
+		Assert.assertTrue(linesOfOutput[0].startsWith("Invalid argument"));
 	}
 
 	@Then("I should be displayed the image url")
 	public void displayImageUrl() {
-		Assert.assertTrue(false);
+		String[] linesOfOutput = linesOfOutput();
+		assertThat(linesOfOutput.length, is(1));
+		assertThat(linesOfOutput[0].startsWith("http"), is(true));
+		key = linesOfOutput[0].substring(linesOfOutput[0].lastIndexOf("/") + 1, linesOfOutput[0].lastIndexOf("."));
 	}
 
 	@Then("I should have the cat image on my filesystem")
-	public void checkFileExistence() {
-		Assert.assertTrue(false);
+	public void checkFileExistence() throws Exception {
+		boolean condition = false;
+		Path dir = Paths.get(System.getProperty("java.io.tmpdir"));
+		DirectoryStream<Path> stream = Files.newDirectoryStream(dir, key + "*");
+		for (Path entry : stream) {
+			condition = true;
+		}
+		Assert.assertTrue(condition);
 	}
 
 	@When("I choose to read a fact about cats")

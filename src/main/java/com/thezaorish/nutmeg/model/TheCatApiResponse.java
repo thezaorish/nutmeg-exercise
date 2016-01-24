@@ -3,7 +3,6 @@ package com.thezaorish.nutmeg.model;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,6 +34,10 @@ public class TheCatApiResponse {
 		}
 		getData().setCategories(Arrays.asList(categories));
 		return this;
+	}
+
+	public TheCatApiImage getSingleImage() {
+		return (null != getData() && !getData().getImages().isEmpty()) ? getData().getImages().get(0) : null;
 	}
 
 	@Override

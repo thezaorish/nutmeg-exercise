@@ -1,5 +1,14 @@
 Feature: Facts about cats
 
+  Scenario: Invalid operation
+    When I choose an invalid operation
+    Then I should be instructed what are the correct operations
+
+  Scenario: Default operation
+    When I do not choose any operation
+    Then I should be displayed the image url
+    And I should have the cat image on my filesystem
+
   Scenario: Collecting cat images
     When I choose to get an image of a cat
     Then I should be displayed the image url
