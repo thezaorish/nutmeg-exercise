@@ -11,7 +11,7 @@ import org.junit.Test;
 /**
  * Created by zaorish on 23/01/16.
  */
-public class CatFactApiResponseJsonDeserializer {
+public class CatFactApiResponseJsonDeserializerTest {
 
 	private JsonDeserializer deserializer;
 
