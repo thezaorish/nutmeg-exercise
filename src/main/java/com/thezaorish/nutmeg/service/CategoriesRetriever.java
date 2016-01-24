@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.thezaorish.nutmeg.model.TheCatApiResponse;
 import com.thezaorish.nutmeg.service.http.TheCatApiHTTPService;
+import com.thezaorish.nutmeg.service.transformer.XMLDeserializer;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -15,18 +16,18 @@ import java.util.List;
 @Singleton
 public class CategoriesRetriever {
 
-	private TheCatApiHTTPService theCatApiHTTPService;
+	private TheCatApiHTTPService httpService;
 
 	private XMLDeserializer xmlDeserializer;
 
 	@Inject
-	public CategoriesRetriever(TheCatApiHTTPService theCatApiHTTPService, XMLDeserializer xmlDeserializer) {
-		this.theCatApiHTTPService = theCatApiHTTPService;
+	public CategoriesRetriever(TheCatApiHTTPService httpService, XMLDeserializer xmlDeserializer) {
+		this.httpService = httpService;
 		this.xmlDeserializer = xmlDeserializer;
 	}
 
 	public List<String> retrieveCategories() {
-		String xml = theCatApiHTTPService.getCategories();
+		String xml = httpService.getCategories();
 		TheCatApiResponse theCatApiResponse;
 		try {
 			theCatApiResponse = xmlDeserializer.retrieveResourceFromResponse(xml, TheCatApiResponse.class);

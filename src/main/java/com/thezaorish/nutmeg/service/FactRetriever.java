@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.thezaorish.nutmeg.model.CatFactApiResponse;
 import com.thezaorish.nutmeg.service.http.CatFactHTTPService;
+import com.thezaorish.nutmeg.service.transformer.JsonDeserializer;
 
 import java.io.IOException;
 

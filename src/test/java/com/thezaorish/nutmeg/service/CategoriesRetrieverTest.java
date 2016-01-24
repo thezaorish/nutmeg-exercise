@@ -7,6 +7,7 @@ import static org.mockito.BDDMockito.given;
 import com.thezaorish.nutmeg.model.TheCatApiCategory;
 import com.thezaorish.nutmeg.model.TheCatApiResponse;
 import com.thezaorish.nutmeg.service.http.TheCatApiHTTPService;
+import com.thezaorish.nutmeg.service.transformer.XMLDeserializer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

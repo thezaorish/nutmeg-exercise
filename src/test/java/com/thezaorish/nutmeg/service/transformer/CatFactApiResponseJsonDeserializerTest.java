@@ -1,4 +1,4 @@
-package com.thezaorish.nutmeg.service;
+package com.thezaorish.nutmeg.service.transformer;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

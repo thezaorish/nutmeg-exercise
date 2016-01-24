@@ -1,4 +1,4 @@
-package com.thezaorish.nutmeg.service;
+package com.thezaorish.nutmeg.service.transformer;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

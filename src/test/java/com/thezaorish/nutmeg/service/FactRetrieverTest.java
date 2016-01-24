@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 import com.thezaorish.nutmeg.model.CatFactApiResponse;
 import com.thezaorish.nutmeg.service.http.CatFactHTTPService;
+import com.thezaorish.nutmeg.service.transformer.JsonDeserializer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
