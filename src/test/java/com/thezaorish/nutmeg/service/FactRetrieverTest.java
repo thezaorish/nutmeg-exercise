@@ -35,7 +35,7 @@ public class FactRetrieverTest {
 	public void shouldRetrieveSingleFact() throws Exception {
 		// given a response with multiple interesting facts about cats
 		String json = "anyString";
-		given(httpService.get()).willReturn(json);
+		given(httpService.getCategories()).willReturn(json);
 
 		CatFactApiResponse validWithMultipleFacts = new CatFactApiResponse().valid().withFacts("cats are funny", "lots of cat pictures on the internet");
 		given(deserializer.retrieveResourceFromResponse(json, CatFactApiResponse.class)).willReturn(validWithMultipleFacts);

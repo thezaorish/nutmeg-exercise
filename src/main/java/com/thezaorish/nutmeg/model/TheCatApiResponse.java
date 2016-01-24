@@ -4,6 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -25,6 +26,9 @@ public class TheCatApiResponse {
 	}
 
 	public List<String> getCategories() {
+		if (null == getData()) {
+			return Collections.emptyList();
+		}
 		List<TheCatApiCategory> categories = getData().getCategories();
 		return categories.stream().map(category -> category.getName()).collect(toList());
 	}
@@ -33,6 +37,13 @@ public class TheCatApiResponse {
 			setData(new TheCatApiData());
 		}
 		getData().setCategories(Arrays.asList(categories));
+		return this;
+	}
+	public TheCatApiResponse withImages(TheCatApiImage... images) {
+		if (null == getData()) {
+			setData(new TheCatApiData());
+		}
+		getData().setImages(Arrays.asList(images));
 		return this;
 	}
 

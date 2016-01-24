@@ -15,6 +15,14 @@ public class TheCatApiImage extends RemoteFile {
 	@JacksonXmlProperty(localName = "id")
 	private String id;
 
+	public TheCatApiImage() {
+		// empty constructor needed by jackson
+	}
+	public TheCatApiImage(String url, String id) {
+		this.url = url;
+		this.id = id;
+	}
+
 	public String getUrl() {
 		return url;
 	}

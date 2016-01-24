@@ -25,7 +25,7 @@ public class FactRetriever {
 	}
 
 	public String retrieveFactAboutCats() {
-		String json = httpService.get();
+		String json = httpService.getCategories();
 
 		CatFactApiResponse theCatFactApiResponse;
 		try {

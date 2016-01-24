@@ -51,5 +51,20 @@ public class CategoriesRetrieverTest {
 		assertThat(categories.get(0), is("claw"));
 		assertThat(categories.get(1), is("scratch"));
 	}
+	@Test
+	public void shouldHandleIncompleteResponse() throws Exception {
+		// given
+		String xml = "anyXml";
+		given(theCatApiHTTPService.getCategories()).willReturn(xml);
+
+		TheCatApiResponse catApiResponse = new TheCatApiResponse();
+		given(xmlDeserializer.retrieveResourceFromResponse(xml, TheCatApiResponse.class)).willReturn(catApiResponse);
+
+		// when
+		List<String> categories = categoriesRetriever.retrieveCategories();
+
+		// then
+		assertThat(categories.size(), is(0));
+	}
 
 }
