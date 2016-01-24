@@ -55,7 +55,7 @@ public class Runner {
 
 	private static void fact() {
 		FactRetriever factRetrieverInstance = injector.getInstance(FactRetriever.class);
-		System.out.print(factRetrieverInstance.retrieveFactAboutCats());
+		System.out.println(factRetrieverInstance.retrieveFactAboutCats());
 	}
 
 	private static void invalid() {
