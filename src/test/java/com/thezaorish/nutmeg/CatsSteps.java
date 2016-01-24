@@ -60,12 +60,16 @@ public class CatsSteps {
 
 	@When("I choose to find out more about the categories of cats")
 	public void chooseCategory() throws Exception {
-		//
+		Runner.main(new String[] { "categories" });
+		outputStream.flush();
 	}
 
 	@Then("I should be displayed the cat categories")
 	public void displayCategory() {
-		Assert.assertTrue(false);
+		String[] linesOfOutput = linesOfOutput();
+		assertThat(linesOfOutput.length, is(1));
+		assertThat(linesOfOutput[0].contains("space"), is(true));
+		assertThat(linesOfOutput[0].contains("funny"), is(true));
 	}
 
 	private String[] linesOfOutput() {

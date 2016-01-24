@@ -1,6 +1,7 @@
 package com.thezaorish.nutmeg.service;
 
 import com.thezaorish.nutmeg.model.CatFactApiResponse;
+import com.thezaorish.nutmeg.service.http.CatFactHTTPService;
 
 import java.io.IOException;
 
