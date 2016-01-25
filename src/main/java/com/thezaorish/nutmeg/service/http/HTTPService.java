@@ -6,8 +6,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.http.HttpStatus;
 
-import java.util.Map;
-
 /**
  * Created by zaorish on 24/01/16.
  */
@@ -16,13 +14,9 @@ public class HTTPService {
 
 	public String get(HTTPRequest httpRequest) {
 		Unirest.setTimeouts(httpRequest.getConnectionTimeout(), httpRequest.getSocketTimeout());
-		for (Map.Entry<String, String> entry : httpRequest.getCustomHeaders().entrySet()) {
-			Unirest.setDefaultHeader(entry.getKey(), entry.getValue());
-		}
-
 		HttpResponse<String> stringHttpResponse = null;
 		try {
-			stringHttpResponse = Unirest.get(httpRequest.getUrl()).asString();
+			stringHttpResponse = Unirest.get(httpRequest.getUrl()).headers(httpRequest.getCustomHeaders()).asString();
 		} catch (UnirestException e) {
 			e.printStackTrace();
 		}
