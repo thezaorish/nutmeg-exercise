@@ -16,7 +16,7 @@ The command should:
 - [Unirest](http://unirest.io/java.html) for interacting with the external APIs
 - [Jackson Library](https://github.com/FasterXML/jackson) for handling JSON and XML transformation
 - [Guice](https://github.com/google/guice) for dependency injection
-- [Jnuit](http://junit.org/) for unit tests
+- [JUnit](http://junit.org/) for unit tests
 
 #####**Build**
 > - mvn package
